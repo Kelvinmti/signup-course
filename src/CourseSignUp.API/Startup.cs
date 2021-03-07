@@ -2,6 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CourseSignUp.Application.Mapping;
+using CourseSignUp.Domain.Repositories;
+using CourseSignUp.Infra.Data.Repositories;
+using CourseSignUp.Infra.Email;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,8 +32,15 @@ namespace CourseSignUp.API
         {
             services.AddControllers();
             services.AddMediatR(typeof(Startup));
-
-        }
+            services.AddScoped<IStatisticsRepository>();
+            services.AddScoped<IMapper>();
+            services.AddScoped<IEmailSender>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<ISignUpRepository, SignUpRepository>();
+            services.AddScoped<IStatisticsRepository>();
+    }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
