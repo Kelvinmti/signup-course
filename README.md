@@ -32,6 +32,3 @@ I'm gonna list all patterns and tools I have used in this solution:
 
 ## What it can be improved and how?
 - I need to create a lock mechanism in order to prevent signup request to exceed the total vacancies of the course. Using a robust Message broker will improve the performance making asynchronous processing. And I also have created a business validation to avoid exceeds the total vacancies but I know I need to mitigate the risk of parallel tasks. I need to think more about it;
-
-## Final considerations
-- I did my best in the least time I had.
